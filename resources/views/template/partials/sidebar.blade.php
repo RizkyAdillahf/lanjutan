@@ -13,7 +13,9 @@
           <img src="{{ asset ('template/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">RAF</a>
+          <a href="#" class="d-block">
+            {{ auth()->user()->name_petugas }}
+          </a>
         </div>
       </div>
 
@@ -65,7 +67,15 @@
           </li>
           <li class="nav-item">
             <a href="../logout" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-money-check"></i>
+              <p>
+                Data SPP
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../logout" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Logout
               </p>

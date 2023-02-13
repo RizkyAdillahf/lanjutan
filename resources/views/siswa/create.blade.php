@@ -35,15 +35,15 @@
                  <option value="XII">XII RPL 3</option>
                 </select>
                   </div>
-                  <div class="form-group">
-                  <label>Jumlah Nominal</label>
-                <select class="form-control" name="spps_id" id="spps_id">
-                 <option disabled selected>Silahkan Pilih Nominal</option>
-                 <option value="2jt">2000000</option>
-                 <option value="3jt">300000</option>
-                 <option value="4jt">4000000</option>
-                 </select>
-                  </div>
+                  <div class="card-body">
+            <div class="form-group" >
+            <select class="form-select" aria-label="Default select example" name="spps_id" >
+            <option selected>Open this select menu</option>
+            @foreach ($spp as $item)
+            <option value="{{ $item->id}}">{{ $item->id }}</option>
+            @endforeach
+            </select>
+           </div>
 
                 <!-- /.card-body -->
 

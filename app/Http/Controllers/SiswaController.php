@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
+use App\Models\Spp;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -15,9 +16,9 @@ class SiswaController extends Controller
     public function index()
     {
         //
-        $siswa = siswa::select('id', 'nis',
-        'nama', 'kelas_id')->get();
-        return view('siswa.index', compact('siswa'));
+        $siswa = Siswa::all();
+        $spp = Spp::all();
+        return view('siswa.index', compact('siswa','spp'));
     }
 
     /**
@@ -28,8 +29,9 @@ class SiswaController extends Controller
     public function create()
     {
         //
-        $siswa = siswa::all();
-        return view('siswa.create', compact('siswa'));
+        $siswa = Siswa::all();
+        $spp = Spp::all();
+        return view('siswa.create', compact('siswa','spp'));
     }
 
     /**
