@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
+use App\Models\Kelas;
 use App\Models\Spp;
 use Illuminate\Http\Request;
 
@@ -29,9 +30,9 @@ class SiswaController extends Controller
     public function create()
     {
         //
-        $siswa = Siswa::all();
-        $spp = Spp::all();
-        return view('siswa.create', compact('siswa','spp'));
+        $kelas = Kelas::all();
+        $spps = Spp::all();
+        return view('siswa.create', compact('kelas','spps'));
     }
 
     /**

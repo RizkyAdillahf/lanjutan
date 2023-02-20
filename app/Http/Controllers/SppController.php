@@ -15,6 +15,8 @@ class SppController extends Controller
     public function index()
     {
         //
+        $spps = Spp::all();
+        return view('spp.index', compact('spps'));
     }
 
     /**

@@ -15,6 +15,9 @@ class KelasController extends Controller
     public function index()
     {
         //
+        $kelas = Kelas::all();
+        // dd($kelas);
+        return view('kelas.index',compact('kelas'));
     }
 
     /**
@@ -25,6 +28,7 @@ class KelasController extends Controller
     public function create()
     {
         //
+        return view('kelas.create');
     }
 
     /**
@@ -36,6 +40,18 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nama_kelas'    => 'required',
+            'kompetensi_keahlian'   => 'required'
+        ],[
+            'nama_kelas.required'   => 'Nama Kelas Wajib Di Isi',
+            'kompetensi_keahlian.max'   => 'Kompetensi Keahlian Wajib Di Isi',
+        ]);
+        Kelas::create([
+            'nama_kelas'    => $request->nama_kelas,
+            'kompetensi_keahlian'   => $request->kompetensi_keahlian,
+        ]);
+        return redirect()->route('kelas.index');    
     }
 
     /**
@@ -47,6 +63,8 @@ class KelasController extends Controller
     public function show(Kelas $kelas)
     {
         //
+        $kelas = Kelas::find($kelas->id);
+        return view('kelas.show', compact('kelas'));
     }
 
     /**
