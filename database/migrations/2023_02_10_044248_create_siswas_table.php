@@ -17,6 +17,7 @@ class CreateSiswasTable extends Migration
             $table->id();
             $table->char('nisn', 10);
             $table->char('nis', 8);
+            $table->char('nama');
             $table->text('alamat');
             $table->string('no_telp', 13);
             $table->foreignId('kelas_id')->constrained('kelas')->onDelete('cascade');

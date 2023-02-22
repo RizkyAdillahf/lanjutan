@@ -47,6 +47,7 @@ class SiswaController extends Controller
         $request->validate([
             'nisn'  => 'required',
             'nis'  => 'required',
+            'nama'  => 'required',
             'alamat'  => 'required',
             'no_telp'  => 'required',
             'kelas_id'  => 'required',
@@ -56,6 +57,7 @@ class SiswaController extends Controller
         siswa::create([
             'nisn'  => $request-> nisn,
             'nis'  => $request-> nis,
+            'nama'  => $request-> nama,
             'alamat'  => $request-> alamat,
             'no_telp'  => $request-> no_telp,
             'kelas_id'  => $request-> kelas_id,
@@ -73,6 +75,8 @@ class SiswaController extends Controller
     public function show(Siswa $siswa)
     {
         //
+        $siswa = Siswa::find($siswa->id);
+        return view('siswa.show', compact('siswa'));
     }
 
     /**
@@ -84,6 +88,8 @@ class SiswaController extends Controller
     public function edit(Siswa $siswa)
     {
         //
+        $siswa = Siswa::find($siswa->id);
+        return view('siswa.show', compact('siswa'));
     }
 
     /**
@@ -96,6 +102,26 @@ class SiswaController extends Controller
     public function update(Request $request, Siswa $siswa)
     {
         //
+        $request->validate([
+            'nisn' => 'required',
+            'nis' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
+            'kelas_id' => 'required',
+            'spps_id' => 'required'
+        ]);
+        $siswa = Siswa::find($siswa->id);
+        $siswa->nisn = $request->nisn;
+        $siswa->nis = $request->nis;
+        $siswa->nama = $request->nama;
+        $siswa->alamat = $request->alamat;
+        $siswa->no_telp = $request->no_telp;
+        $siswa->kelas_id = $request->kelas_id;
+        $siswa->spps_id = $request->spps_id;
+        $siswa->update();
+
+        return redirect()->route('siswa.index');
     }
 
     /**
@@ -107,5 +133,8 @@ class SiswaController extends Controller
     public function destroy(Siswa $siswa)
     {
         //
+        $siswa = Siswa::find($siswa->id);
+        $siswa->delete();
+        return redirect('/siswa');
     }
 }
