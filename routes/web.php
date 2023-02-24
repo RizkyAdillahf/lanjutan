@@ -37,5 +37,7 @@ Route::get('/dashboard/petugas',[DashboardController::class,'petugas'])->name('d
 Route::resource('siswa', SiswaController::class);
 Route::resource('spp', SppController::class)->middleware(['auth', 'level:admin']);
 Route::resource('kelas', KelasController::class)->middleware(['auth', 'level:admin']);
-
+Route::get('kelas/{kela}/edit',[KelasController::class, 'edit'])->name('kelas_edit')->middleware('auth', 'level:admin');
 Route::view('error/403', 'error.403')->name('error.403');
+
+Route::resource('kelas', [KelasController::class]);

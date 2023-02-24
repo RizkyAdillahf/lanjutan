@@ -121,7 +121,7 @@ class SiswaController extends Controller
         $siswa->spps_id = $request->spps_id;
         $siswa->update();
 
-        return redirect()->route('siswa.index');
+        return redirect()->route('/siswa');
     }
 
     /**

@@ -79,7 +79,7 @@ class SppController extends Controller
     {
         //
         $spps = Spp::find($spp->id);
-        return view('spp.show', compact('spps'));
+        return view('spp.edit', compact('spps'));
     }
 
     /**
@@ -100,7 +100,7 @@ class SppController extends Controller
         $spps->tahun = $request->tahun;
         $spps->nominal = $request->nominal;
         $spps->update();
-        return redirect('/spp'); 
+        return redirect('spp.update'); 
     }
 
     /**

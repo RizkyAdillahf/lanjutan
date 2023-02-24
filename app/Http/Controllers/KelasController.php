@@ -76,6 +76,8 @@ class KelasController extends Controller
     public function edit(Kelas $kelas)
     {
         //
+        $kelas = Kelas::find($kelas->id);
+        return view('kelas.edit', compact('kelas'));
     }
 
     /**
@@ -88,6 +90,16 @@ class KelasController extends Controller
     public function update(Request $request, Kelas $kelas)
     {
         //
+        $request->validate([
+            'nama_kelas' => 'required',
+            'kompetensi_keahlian' => 'required',
+        ]);
+        $kelas = kelas::find($kelas->id);
+        $kelas->nama_kelas = $request->nama_kelas;
+        $kelas->kompetensi_keahlian = $request->kompetensi_keahlian;
+        $kelas->update();
+
+        return redirect()->route('/kelas');
     }
 
     /**

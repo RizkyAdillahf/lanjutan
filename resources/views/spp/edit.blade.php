@@ -17,11 +17,11 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="inputid">Tahun</label>
-                    <input type="number" name="tahun" class="form-control" id="inputTahun" placeholder="Enter Tahun" value="{{ $spps->tahun }}" require>
+                    <input type="number" name="tahun" class="form-control" id="inputTahun" placeholder="Enter Tahun" value="{{ $spps->tahun }}">
                   </div>
                   <div class="form-group">
                     <label for="inputNamaKelas">Nominal</label>
-                    <input type="number" name="nominal" class="form-control" id="inputNominal" placeholder="Enter Nominal"  value="{{ $spps->nominal }}" require>
+                    <input type="number" name="nominal" class="form-control" id="inputNominal" placeholder="Enter Nominal"  value="{{ $spps->nominal }}">
                 </select>
                 </div>
                 <!-- /.card-body -->
