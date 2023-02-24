@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-
+      @if (auth()->user()->level == 'admin')
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -51,6 +51,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/petugas" class="nav-link">
+              <i class="nav-icon fas fa-school"></i>
+              <p>
+                Data Petugas
+              </p>
+            </a>
+          </li>
+          @endif
           <li class="nav-item">
             <a href="/spp" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>

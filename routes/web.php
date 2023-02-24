@@ -6,6 +6,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\PetugasController;
+
 
 
 /*
@@ -35,9 +37,11 @@ Route::get('/dashboard/admin',[DashboardController::class,'admin'])->name('dashb
 Route::get('/dashboard/petugas',[DashboardController::class,'petugas'])->name('dashboard.petugas')->middleware('auth');
 
 Route::resource('siswa', SiswaController::class);
-Route::resource('spp', SppController::class)->middleware(['auth', 'level:admin']);
+Route::get('siswa/{siswa}/edit', [SiswaController::class,'edit'])->name('siswa.edit')->middleware('auth', 'level:admin');
+Route::resource('spp', SppController::class)->middleware(['auth', 'level:admin,petugas']);
 Route::resource('kelas', KelasController::class)->middleware(['auth', 'level:admin']);
-Route::get('kelas/{kela}/edit',[KelasController::class, 'edit'])->name('kelas_edit')->middleware('auth', 'level:admin');
 Route::view('error/403', 'error.403')->name('error.403');
 
-Route::resource('kelas', [KelasController::class]);
+Route::resource('kelas', KelasController::class);
+
+Route::resource('petugas', PetugasController::class);

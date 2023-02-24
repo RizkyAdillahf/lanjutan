@@ -99,7 +99,7 @@ class KelasController extends Controller
         $kelas->kompetensi_keahlian = $request->kompetensi_keahlian;
         $kelas->update();
 
-        return redirect()->route('/kelas');
+        return redirect('kelas');
     }
 
     /**

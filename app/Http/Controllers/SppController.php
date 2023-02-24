@@ -100,7 +100,7 @@ class SppController extends Controller
         $spps->tahun = $request->tahun;
         $spps->nominal = $request->nominal;
         $spps->update();
-        return redirect('spp.update'); 
+        return redirect('spp'); 
     }
 
     /**

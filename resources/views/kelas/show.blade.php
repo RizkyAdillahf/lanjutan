@@ -16,7 +16,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="input_nama_kelas">nama_kelas</label>
-                    <input type="text" name="nama_kelas" class="form-control" id="inputnama_kelas" value="{{ $kelas->nama_kelas }}" disabled  >
+                    <input type="text" name="nama_kelas" class="form-control" id="input_nama_kelas" value="{{ $kelas->nama_kelas }}" disabled  >
                   </div>
                 <div class="form-group">
                     <label for="input_kompetensi_keahlian">kompetensi_keahlian</label>
