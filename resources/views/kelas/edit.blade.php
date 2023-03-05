@@ -11,17 +11,17 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="/kelas{{ $kelas->id }}" method="POST">
+              <form action="/kelas/{{ $kelas->id }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="nama_kelas">nama kelas</label>
-                    <input type="text" name="nama_kelas" class="form-control" id="nama_kelas" placeholder="Enter Tahun" value="{{ $kelas->nama_kelas }}">
+                    <label for="inputnamakelas">Nama kelas</label>
+                    <input type="text" name="nama_kelas" class="form-control" id="inputnama_kelas" value="{{ $kelas->nama_kelas }}" require>
                   </div>
                   <div class="form-group">
-                    <label for="kompetensi_keahlian">kompetensi keahlian</label>
-                    <input type="text" name="kompetensi_keahlian" class="form-control" id="kompetensi_keahlian" placeholder="Enter"  value="{{ $kelas->kompetensi_keahlian }}">
+                    <label for="inputkompetensikeahlian">Kompetensi Keahlian</label>
+                    <input type="" name="kompetensi_keahlian" class="form-control" id="inputkompetensi_keahlian" value="{{ $kelas->kompetensi_keahlian }}" require>
                 </select>
                 </div>
                 <!-- /.card-body -->

@@ -15,8 +15,7 @@ class KelasController extends Controller
     public function index()
     {
         //
-        $kelas = Kelas::all();
-        // dd($kelas);
+        $kelas=Kelas::all();
         return view('kelas.index',compact('kelas'));
     }
 
@@ -41,17 +40,20 @@ class KelasController extends Controller
     {
         //
         $request->validate([
-            'nama_kelas'    => 'required',
+            'nama_kelas'     => 'required',
             'kompetensi_keahlian'   => 'required'
         ],[
-            'nama_kelas.required'   => 'Nama Kelas Wajib Di Isi',
+            'nama_kelas.required'       => 'Nama Kelas Wajib Di Isi',
             'kompetensi_keahlian.max'   => 'Kompetensi Keahlian Wajib Di Isi',
         ]);
+
+        // dd($request);
         Kelas::create([
-            'nama_kelas'    => $request->nama_kelas,
+            'nama_kelas'     => $request->nama_kelas,
             'kompetensi_keahlian'   => $request->kompetensi_keahlian,
         ]);
-        return redirect()->route('kelas.index');    
+
+        return redirect()->route('kelas.index');
     }
 
     /**
@@ -94,12 +96,11 @@ class KelasController extends Controller
             'nama_kelas' => 'required',
             'kompetensi_keahlian' => 'required',
         ]);
-        $kelas = kelas::find($kelas->id);
+        $kelas = Kelas::find($kelas->id);
         $kelas->nama_kelas = $request->nama_kelas;
         $kelas->kompetensi_keahlian = $request->kompetensi_keahlian;
         $kelas->update();
-
-        return redirect('kelas');
+        return redirect('/kelas');
     }
 
     /**
@@ -111,5 +112,8 @@ class KelasController extends Controller
     public function destroy(Kelas $kelas)
     {
         //
+        $kelas = Kelas::find($kelas->id);
+        $kelas->delete();
+        return redirect('/kelas');
     }
 }

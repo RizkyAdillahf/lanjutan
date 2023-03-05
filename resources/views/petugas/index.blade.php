@@ -1,7 +1,7 @@
 @extends('template.master')
 
 @section('judul')
-    <h1>Halaman Kelas</h1>
+    <h1>Data User</h1>
 @endsection
 
 @section('content')
@@ -12,10 +12,10 @@
               <i class="fas fa-minus"></i>
             </button>
             <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-              <i class="fas fa-times"></i>
+              <i class="fas fa-times"></i>x
             </button>
           </div>
-      <h3 class="card-title">Data Petugas</h3>
+      <h3 class="card-title">Data User</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -37,20 +37,17 @@
         </tr>
         </thead>
         <tbody>
-          @forelse($petugas as $value)
+          @forelse($users as $user)
          <tr>
           <td>{{ $loop->iteration }}</td>
-          <td>{{ $value->nama_petugas }}</td>
-          <td>{{ $value->username }}</td>
-          <td>{{ $value->level }}</td>
-
+          <td>{{ $user->name_petugas}}</td>
+          <td>{{ $user->username }}</td>
+          <td>{{ $user->level }}</td>
           <td>
-          <form action="{{ route ('petugas.destroy', [$petugas->id])}}" method="POST">
-              <a class="btn btn-info mr-3" href="petugas/{{$petugas->id}}">
-              <i class="fas fas fa-exclamation-circle"></i> Detail</a> 
-              <a class="btn btn-warning mr-3" href="petugas/{{$value->id}}/edit">
+          <form action="{{ route ('petugas.destroy', [$user->id])}}" method="POST">
+              <a class="btn btn-warning mr-3" href="petugas/{{$user->id}}/edit">
               <i class="fas fa-edit	"></i> Edit</a>
-              <form action="/petugas/{{$value->id}}" method="POST">
+              <form action="/petugas/{{$user->id}}" method="POST">
             @csrf
             @method('DELETE')
            <button type="submit" class="btn btn-danger" value="Delete">

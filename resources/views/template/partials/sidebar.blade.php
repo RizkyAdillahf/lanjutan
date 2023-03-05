@@ -9,7 +9,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset ('template/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset ('template/dist/img/neskar.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">
@@ -43,6 +43,8 @@
               </p>
             </a>
           </li>
+          @endif
+          @if (auth()->user()->level == 'admin')
           <li class="nav-item">
             <a href="/kelas" class="nav-link">
               <i class="nav-icon fas fa-school"></i>
@@ -51,15 +53,16 @@
               </p>
             </a>
           </li>
+          @endif
+          @if (auth()->user()->level == 'admin')
           <li class="nav-item">
             <a href="/petugas" class="nav-link">
-              <i class="nav-icon fas fa-school"></i>
+              <i class="nav-icon fas fa-user-secret"></i>
               <p>
                 Data Petugas
               </p>
             </a>
           </li>
-          @endif
           <li class="nav-item">
             <a href="/spp" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>
@@ -68,8 +71,9 @@
               </p>
             </a>
           </li>
+          @endif
           <li class="nav-item">
-            <a href="../logout" class="nav-link">
+            <a href="/logout" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Logout

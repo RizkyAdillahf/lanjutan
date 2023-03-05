@@ -37,4 +37,4 @@
       <!-- Messages Dropdown Menu -->
       <!-- Notifications Dropdown Menu -->
     </ul>
-  </nav>
+</nav>
