@@ -60,7 +60,7 @@ Route::middleware(['auth', 'level:admin'])->group(function () {
 Route::middleware(['auth', 'level:admin'])->group(function () {
     Route::controller(PembayaranController::class)->group(function() {
         Route::get('pembayaran', 'index')->name('pembayaran.index');
-        Route::get('pembayaran/create', 'create')->name('pembayaran.create');
+        Route::get('pembayaran/create/{siswa}', 'create')->name('pembayaran.create');
         Route::post('pembayaran', 'store')->name('pembayaran.store');
     });
 });

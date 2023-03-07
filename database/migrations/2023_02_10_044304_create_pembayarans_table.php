@@ -18,6 +18,7 @@ class CreatePembayaransTable extends Migration
             $table->date('tanggal_bayar');
             $table->string('bulan_bayar', 8);
             $table->string('tahun_bayar', 4);
+            $table->string('jumlah_bayar');
             $table->foreignId('users_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('siswas_id')->constrained('siswas')->onDelete('cascade');
             $table->foreignId('spps_id')->constrained('spps')->onDelete('cascade');

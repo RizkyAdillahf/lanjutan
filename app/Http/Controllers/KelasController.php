@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Siswa    ;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -47,7 +48,6 @@ class KelasController extends Controller
             'kompetensi_keahlian.max'   => 'Kompetensi Keahlian Wajib Di Isi',
         ]);
 
-        // dd($request);
         Kelas::create([
             'nama_kelas'     => $request->nama_kelas,
             'kompetensi_keahlian'   => $request->kompetensi_keahlian,
@@ -62,9 +62,10 @@ class KelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function show(Kelas $kelas)
+    public function show(Kelas $kelas, siswa $siswa)
     {
         //
+        $siswa = siswa::find($siswa->id);
         $kelas = Kelas::find($kelas->id);
         return view('kelas.show', compact('kelas'));
     }

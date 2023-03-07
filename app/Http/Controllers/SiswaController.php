@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Siswa;
 use App\Models\Kelas;
+use App\Models\Pembayaran;
 use App\Models\Spp;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,7 @@ class SiswaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Pembayaran $pembayaran)
     {
         //
         $request->validate([
@@ -61,7 +62,7 @@ class SiswaController extends Controller
             'alamat'  => $request-> alamat,
             'no_telp'  => $request-> no_telp,
             'kelas_id'  => $request-> kelas_id,
-            'spps_id'  => $request-> spps_id
+            'spps_id'  => $request-> spps_id,
         ]);
         return redirect()->route('siswa.index');    
     }
@@ -72,11 +73,13 @@ class SiswaController extends Controller
      * @param  \App\Models\Siswa  $siswa
      * @return \Illuminate\Http\Response
      */
-    public function show(Siswa $siswa)
+    public function show(Siswa $siswa, kelas $kelas)
     {
         //
+        $kelas = kelas::all();
+        $pembayarans = Pembayaran::all();
         $siswa = Siswa::find($siswa->id);
-        return view('siswa.show', compact('siswa'));
+        return view('siswa.show', compact('siswa','pembayarans','kelas'));
     }
 
     /**

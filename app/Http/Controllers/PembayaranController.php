@@ -6,7 +6,7 @@ use App\Models\Pembayaran;
 use App\Models\Siswa;
 use App\Models\Spp;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 
 
 use Illuminate\Http\Request;
@@ -43,25 +43,25 @@ class PembayaranController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Siswa $siswa)
+    public function store(Request $request, Siswa $siswa, Spp $spp)
     {
         //
         $request->validate([
-            'tgl_bayar' => 'required',
-            'bulan_dibayar' => 'required',
-            'tahun_dibayar' => 'required',
-            'jumlah_dibayar' => 'required'
+            'tanggal_bayar' => 'required',
+            'bulan_bayar' => 'required',
+            'tahun_bayar' => 'required',
+            'jumlah_bayar' => 'required'
         ]);
         Pembayaran::create([
-            'users_id'  => Auth::user()->id,
-            'siswas_id' =>  $siswa->id,
-            'spps_id'   =>  $siswa->spps_id,
-            'tgl_bayar' => $request->tgl_bayar,
-            'bulan_dibayar' => $request->bulan_dibayar,
-            'tahun_dibayar' => $request->tahun_dibayar,
+            'users_id' => Auth::user()->id,
+            'siswas_id' => '1',
+            'spps_id' => '1',
+            'tanggal_bayar' => $request->tanggal_bayar,
+            'bulan_bayar' => $request->bulan_bayar,
+            'tahun_bayar' => $request->tahun_bayar,
             'jumlah_bayar'=> $request->jumlah_bayar,
         ]);
-        return redirect()->route('siswa.show',$siswa->id);
+        return redirect()->route('siswa.index');
     }
 
     /**

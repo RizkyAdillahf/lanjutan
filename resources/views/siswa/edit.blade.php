@@ -1,51 +1,66 @@
 @extends('template.master')
 
 @section('judul')
-    <h1>Edit Data</h1>
+    <h1>Tambah Pembayaran</h1>
 @endsection
 
 @section ('content')
 <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Edit</h3>
+                <h3 class="card-title">Tambah</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="/siswa/{{ $siswa->id }}" method="POST">
+              <div class="card-body">
+              <form action="{{ route('pembayaran.store', $siswas->id) }}" method="POST">
                 @csrf
-                @method('PUT')
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="input_nisn">Nisn</label>
-                    <input type="number" name="nisn" class="form-control" id="inputnisn" value="{{ $siswa->nisn }}">
+                <div class="form-group">
+                    <label for="input_nis">NamaSiswa</label>
+                    <input type="tex" class="form-control" id="inputnis" value="{{$siswas->nama }}" disabled>
                   </div>
                   <div class="form-group">
-                    <label for="input_nis">Nis</label>
-                    <input type="number" name="nis" class="form-control" id="inputnis" value="{{ $siswa->nis }}">
+                    <label for="input_nis">tgl_bayar</label>
+                    <input type="date" name="tgl_bayar" class="form-control" id="inputnis">
                   </div>
                   <div class="form-group">
-                    <label for="input_nama">Nama</label>
-                    <input type="text" name="nama" class="form-control" id="inputnama" value="{{ $siswa->nama }}">
+                  <label>Bulan bayar</label>
+                <select class="form-control" name="bulan_bayar" id="bulan_dibayar" >
+                    <option disabled selected>-Pilih bulan-</option>
+                    <option value="Januari">Januari</option>
+                    <option value="Februari">Februari</option>
+                    <option value="Maret">Maret</option>
+                    <option value="April">April</option>
+                    <option value="mei">Mei</option>
+                    <option value="juni">Juni</option>
+                    <option value="Agustus">Juli</option>
+                    <option value="Agustus">Agustus</option>
+                    <option value="September">September</option>
+                    <option value="Oktober">Oktober</option>
+                    <option value="November">November</option>
+                    <option value="Desember">Desember</option>
+                 </select>
+                  </div>
+                   <div class="form-group">
+                  <label>Tahun Pembayaran</label>
+                <select class="form-control" name="tahun_dibayar" id="kelas_id" >
+                    <option disable selected> --Silahkan Pilih Tahun-- </option>
+                  @forelse( $spps as $spp)
+                    <option value="{{ $spp->tahun }}">{{ $spp->tahun }}</option>
+                  @empty
+                    <option value="" disabled>Data Masih Kosong</option>
+                  @endforelse
+                </select>
+                  
                   </div>
                   <div class="form-group">
-                    <label for="input_alamat">Alamat</label>
-                    <input type="text" name="alamat" class="form-control" id="inputalamat" value="{{ $siswa->alamat }}">
+                    <label for="inputno_telp">jumlah dibayar</label>
+                    <input type="number" name="jumlah_bayar" class="form-control" id="inputno_telp">
                   </div>
-                  <div class="form-group">
-                    <label for="inputno_telp">No Telp</label>
-                    <input type="number" name="no_telp" class="form-control" id="inputno_telp" value="{{ $siswa->no_telp }}">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputkelas_id">kelas_id</label>
-                    <input type="" name="kelas_id" class="form-control" id="kelas_id" value="{{ $siswa->kelas_id }}">
-                  </div>
-                  <div class="form-group">
-                    <label for="inputspps_id">Spp Id</label>
-                    <input type="" name="spps_id" class="form-control" id="inputspps_id" placeholder="Enter spps_id"  value="{{ $siswa->spps_id }}">
-                  </div>
+                 
+                 
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
 
                 </div>
               </form>

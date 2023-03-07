@@ -15,28 +15,34 @@
               <form action="{{ route('pembayaran.store', $siswa->id) }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="inputnama">Nama Siswa</label>
-                    <input type="text" class="form-control" id="inputnama" value="{{$siswas->nama }}" disabled>
+                    <label for="input_nis">Nama Siswa</label>
+                    <input type="tex" class="form-control" id="inputnis" value="{{$siswa->nama }}" disabled>
                   </div>
                   <div class="form-group">
-                    <label for="inputtgl_bayar">tgl_bayar</label>
-                    <input type="date" name="tgl_bayar" class="form-control" id="tgl_bayar">
+                    <label for="input_nis">Tanggal bayar</label>
+                    <input type="date" name="tanggal_bayar" class="form-control" id="inputnis">
                   </div>
                   <div class="form-group">
                   <label>Bulan bayar</label>
-                <select class="form-control" name="bulan_dibayar" id="bulan_dibayar" >
+                <select class="form-control" name="bulan_bayar" id="bulan_dibayar" >
                     <option disabled selected>-Pilih bulan-</option>
                     <option value="Januari">Januari</option>
                     <option value="Februari">Februari</option>
                     <option value="Maret">Maret</option>
                     <option value="April">April</option>
-                    <option value="mei">Mei</option>
-                    <option value="juni">Juni</option>
+                    <option value="Mei">Mei</option>
+                    <option value="Juni">Juni</option>
+                    <option value="Agustus">Juli</option>
+                    <option value="Agustus">Agustus</option>
+                    <option value="September">September</option>
+                    <option value="Oktober">Oktober</option>
+                    <option value="November">November</option>
+                    <option value="Desember">Desember</option>
                  </select>
                   </div>
                    <div class="form-group">
                   <label>Tahun Pembayaran</label>
-                <select class="form-control" name="tahun_dibayar" id="tahun_dibayar" >
+                <select class="form-control" name="tahun_bayar" id="kelas_id" >
                     <option disable selected> --Silahkan Pilih Tahun-- </option>
                   @forelse( $spps as $spp)
                     <option value="{{ $spp->tahun }}">{{ $spp->tahun }}</option>
@@ -47,8 +53,8 @@
                   
                   </div>
                   <div class="form-group">
-                    <label for="inputjumlah_bayar">jumlah dibayar</label>
-                    <input type="number" name="jumlah_bayar" class="form-control" id="inputjumlah_bayar">
+                    <label for="inputno_telp">Jumlah dibayar</label>
+                    <input type="number" name="jumlah_bayar" class="form-control" id="inputno_telp">
                   </div>
                  
                  

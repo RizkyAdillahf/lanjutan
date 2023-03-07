@@ -14,7 +14,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="inputNisn">Nisn</label>
-                    <input type="number" name="nisn" class="form-control" id="inputnisn" value="{{ $siswa->nisn }}" disabled>
+                    <input type="number" name="nisn" class="form-control" id="inputnisn" value="{{ $siswa->nisn }}" disabled  >
                   </div>
                 <div class="form-group">
                     <label for="input_Nis">Nis</label>
@@ -26,7 +26,7 @@
                   </div>
                 <div class="form-group">
                     <label for="input_Kelas_id">Kelas Id</label>
-                    <input type="" name="kelas_id" class="form-control" id="inputkelas_id" value="{{ $siswa->kelas->nama_kelas }}" disabled>
+                    <input type="text" name="kelas_id" class="form-control" id="inputkelas_id" value="{{ $siswa->kelas_id }}" disabled>
                   </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
               <i class="fas fa-times"></i>
             </button>
           </div>
-      <h3 class="card-title">Data Kelas</h3>
+      <h3 class="card-title">Data Transaksi</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -51,7 +51,7 @@
           <th>Tgl bayar</th>
           <th>Bulan dibayar</th>
           <th>Tahun dibayar</th>
-          <th>Jumlah bayar</th>
+          <th>Jumlah dibayar</th>
         </tr>
         </thead>
         <tbody>
@@ -59,10 +59,10 @@
          <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $pembayaran->tgl_bayar }}</td>
-          <td>{{ $pembayaran->bulan_dibayar }}</td>
+          <td>{{ $pembayaran->bulan_bayar }}</td>
           <td>{{ $pembayaran->tahun_dibayar }}</td>
           <td>{{ $pembayaran->jumlah_bayar }}</td>
-        </td>
+</td>
             @csrf
           </form>
             </td>
